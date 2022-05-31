@@ -2,9 +2,9 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule }                    from '@angular/platform-browser';
 
 import { AppRoutingModule }           from './app-routing.module';
-import { AppComponent }               from './app.component';
-import { HttpClientModule }           from "@angular/common/http";
-import { BrowserAnimationsModule }    from '@angular/platform-browser/animations';
+import { AppComponent }                        from './app.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule }             from '@angular/platform-browser/animations';
 import { MatSliderModule }            from "@angular/material/slider";
 import { MainMenuComponent }          from './components/main-menu/main-menu.component';
 import { MatToolbarModule }           from "@angular/material/toolbar";
@@ -20,7 +20,8 @@ import { MatSnackBarModule }          from "@angular/material/snack-bar";
 import { AddTranslationComponent }    from './components/add-translation/add-translation.component';
 import { ViewByCountryComponent }     from './components/view-by-country/view-by-country.component';
 import { KittSpinnerComponent }       from './components/kitt-spinner/kitt-spinner.component';
-import { MatTableModule }             from '@angular/material/table';
+import { MatTableModule }    from '@angular/material/table';
+import { LoaderInterceptor } from './service/loader-interceptor';
 
 @NgModule({
   declarations: [
@@ -48,9 +49,16 @@ import { MatTableModule }             from '@angular/material/table';
     MatSnackBarModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [KittSpinnerComponent]
 })
 export class AppModule {
 }

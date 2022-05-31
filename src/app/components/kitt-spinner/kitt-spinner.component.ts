@@ -14,7 +14,7 @@ export class KittSpinnerComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  readonly defaultSpeed = 175;
+  readonly defaultSpeed = 50;
 
   speed = new FormControl(this.defaultSpeed);
   @ViewChild('kitt') kitt?: ElementRef<HTMLInputElement>;
@@ -32,8 +32,6 @@ export class KittSpinnerComponent implements OnInit, OnDestroy {
       clearTimeout(this.timeOut);
       this.kittTimer();
     });
-
-
   }
 
   kittTimer(): void {
