@@ -1,0 +1,37 @@
+<app-kitt-spinner *ngIf="showSpinner"></app-kitt-spinner>
+
+<div style="display: block;">
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="mainMenu" [color]="'primary'">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #mainMenu="matMenu">
+      <button [routerLink]="['search']" mat-menu-item>
+        <mat-icon>search</mat-icon>
+        <span>Search translations</span>
+      </button>
+      <button [routerLink]="['add']" mat-menu-item>
+        <mat-icon>note_add</mat-icon>
+        <span>Add translation</span>
+      </button>
+      <button [routerLink]="['view']" mat-menu-item>
+        <mat-icon>pageview</mat-icon>
+        <span>View by country</span>
+      </button>
+    </mat-menu>
+
+    <span>Welcome to Pelican, the world of languages</span>
+
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon">
+      <mat-icon>share</mat-icon>
+    </button>
+
+  </mat-toolbar>
+</div>
+
+

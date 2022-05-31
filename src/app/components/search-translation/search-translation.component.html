@@ -1,0 +1,22 @@
+<form class="example-form" [formGroup]="form" (ngSubmit)="submitForm()">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter word you wish to translate</mat-label>
+    <input [formControl]="key" matNativeControl>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Language</mat-label>
+    <mat-select formControlName="selectedLanguage">
+      <mat-option *ngFor="let lang of SupportedLanguages" [value]="lang">
+        {{ lang }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-button type="submit" color="primary">Submit</button>
+</form>
+
+<div *ngIf="result">
+  <p>The word <strong>{{ key.value }}</strong> in <strong>{{ selectedLanguage.value }}</strong> is:
+    <strong>{{ result?.data }}</strong></p>
+</div>

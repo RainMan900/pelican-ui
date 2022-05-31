@@ -1,0 +1,22 @@
+<form class="example-form" [formGroup]="addTranslationForm" (ngSubmit)="submitForm()">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter word you wish to translate</mat-label>
+    <input formControlName="key" matNativeControl>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Language</mat-label>
+    <mat-select formControlName="language">
+      <mat-option *ngFor="let lang of SupportedLanguages" [value]="lang">
+        {{ lang }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter word you wish to translate</mat-label>
+    <input formControlName="translation" matNativeControl>
+  </mat-form-field>
+
+  <button mat-button type="submit" color="primary">Submit</button>
+</form>
