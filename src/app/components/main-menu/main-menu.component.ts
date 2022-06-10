@@ -1,6 +1,5 @@
 import { Component, OnInit }     from '@angular/core';
 import { SpinnerService }        from "../../service/spinner/spinner.service";
-import { SpinnerOverlayService } from '../../service/spinner-overlay/spinner-overlay.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,12 +8,10 @@ import { SpinnerOverlayService } from '../../service/spinner-overlay/spinner-ove
 })
 export class MainMenuComponent implements OnInit {
 
-  showSpinner = true;
   spinnerInterval?: number;
 
   constructor(
     private spinnerService: SpinnerService,
-    private spinnerOverlay: SpinnerOverlayService,
   ) {
   }
 
@@ -22,9 +19,9 @@ export class MainMenuComponent implements OnInit {
   }
 
   showSpinnerExample(): void {
-    this.spinnerOverlay.show();
+    this.spinnerService.show();
     this.spinnerInterval = setTimeout(() => {
-      this.spinnerOverlay.hide();
+      this.spinnerService.hide();
       // this.showSpinner = false;
     }, 5000);
   }
